@@ -23,7 +23,7 @@ public class InputController : MonoBehaviour {
 			RaycastHit hit;
 
 			if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask)) {
-				Node node = hit.transform.gameObject.GetComponent<Node>();
+				Node node = hit.transform.parent.gameObject.GetComponent<Node>();
 
 				playerController.OnClickNode(node);
 			}
