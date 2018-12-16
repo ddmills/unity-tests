@@ -1,0 +1,4 @@
+enum ViewMode {
+	WorldMap,
+  Detail
+}
