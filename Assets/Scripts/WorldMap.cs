@@ -29,21 +29,27 @@ public class WorldMap : Singleton<WorldMap> {
 		AddNode("n1", 0, 0);
 		AddNode("n2", -4, 0);
 		AddNode("n3", -2, -2);
-		AddNode("n4", 2, -1);
+		AddNode("n4", 4, -2);
 		AddNode("n5", 2, 2);
 		AddNode("n6", -3, 2);
 		AddNode("n7", -4, -5);
 		AddNode("n8", -2, -6);
+		AddNode("n9", -6, -3);
+		AddNode("n10", 0, -5);
+		AddNode("n11", -6, -3);
 
 		AddEdge("e1", "n1", "n2");
 		AddEdge("e2", "n2", "n3");
-		AddEdge("e3", "n3", "n4");
+		AddEdge("e3", "n10", "n4");
 		AddEdge("e4", "n4", "n1");
 		AddEdge("e5", "n1", "n5");
 		AddEdge("e6", "n4", "n5");
 		AddEdge("e7", "n2", "n6");
 		AddEdge("e8", "n7", "n3");
 		AddEdge("e9", "n7", "n8");
+		AddEdge("e10", "n10", "n8");
+		AddEdge("e11", "n9", "n2");
+		AddEdge("e12", "n7", "n11");
 
 		return this;
 	}
