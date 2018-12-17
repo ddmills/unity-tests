@@ -58,11 +58,18 @@ public class PlayerController : MonoBehaviour {
 		this.selectedNode = node;
 		this.viewMode = ViewMode.Detail;
 		CameraController.Instance.Focus(node.Position, 3f, 40f, .05f);
+		Location location = node.gameObject.GetComponent<Location>();
+		NodeInspectorUI.Instance.Show(location);
 	}
 
 	public void ViewMap() {
 		this.viewMode = ViewMode.WorldMap;
+		NodeInspectorUI.Instance.Hide();
 		CameraController.Instance.Focus(selectedNode.Position, 16f, 60f, .05f);
+	}
+
+	private float NormalizeAngle(float angle) {
+		return angle < 0 ? 360 + angle : angle;
 	}
 
 	public void NavigateMap(float inputAngle) {
@@ -75,8 +82,9 @@ public class PlayerController : MonoBehaviour {
 			Vector3 relativePos = (n.Position - startPos).normalized;
 			float rad = Mathf.Atan2(relativePos.z, relativePos.x);
 			float deg = rad * Mathf.Rad2Deg;
-			float normalizedNodeAngle = deg < 0 ? 360 + deg : deg;
-			float angleDiff = Mathf.Abs(inputAngle - normalizedNodeAngle);
+			float normalizedNodeAngle = NormalizeAngle(deg);
+			float normalizeInputAngle = NormalizeAngle(inputAngle);
+			float angleDiff = Mathf.Abs(normalizeInputAngle - normalizedNodeAngle);
 
 			if (angleDiff <= closestAngle) {
 				closest = n;

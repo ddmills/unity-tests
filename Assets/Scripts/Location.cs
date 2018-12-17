@@ -9,6 +9,11 @@ public class Location : MonoBehaviour {
 	private List<Meeple> meeples = new List<Meeple>();
 	[SerializeField]
 	private List<Transform> slots = new List<Transform>();
+	public List<Meeple> Meeples {
+		get {
+			return meeples;
+		}
+	}
 
 	public Location Init(string label) {
 		this.label = label;

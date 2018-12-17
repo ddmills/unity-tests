@@ -23,7 +23,7 @@ public class GameInitializer : Singleton<GameInitializer> {
 		world.AddNode("n8", -2, -6);
 		world.AddNode("n9", -6, -3);
 		world.AddNode("n10", 0, -5);
-		world.AddNode("n11", -6, -3);
+		world.AddNode("n11", -6, -5);
 
 		world.AddEdge("e1", "n1", "n2");
 		world.AddEdge("e2", "n2", "n3");
@@ -37,6 +37,7 @@ public class GameInitializer : Singleton<GameInitializer> {
 		world.AddEdge("e10", "n10", "n8");
 		world.AddEdge("e11", "n9", "n2");
 		world.AddEdge("e12", "n7", "n11");
+		world.AddEdge("e12", "n9", "n11");
 
 		meeples.AddMeeple(home.GetComponent<Location>());
 		meeples.AddMeeple(home.GetComponent<Location>());
