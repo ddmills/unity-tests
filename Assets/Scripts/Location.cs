@@ -15,8 +15,14 @@ public class Location : MonoBehaviour {
 		return this;
 	}
 
+	private Transform GetSlot() {
+		return slots.Find((s) => s.childCount == 0);
+	}
+
 	public void AddMeeple(Meeple meeple) {
 		meeples.Add(meeple);
-		meeple.transform.position = transform.position;
+		Transform slot = GetSlot();
+		meeple.transform.parent = slot;
+		meeple.transform.localPosition = Vector3.zero;
 	}
 }

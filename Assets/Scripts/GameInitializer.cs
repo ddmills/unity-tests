@@ -39,5 +39,9 @@ public class GameInitializer : Singleton<GameInitializer> {
 		world.AddEdge("e12", "n7", "n11");
 
 		meeples.AddMeeple(home.GetComponent<Location>());
+		meeples.AddMeeple(home.GetComponent<Location>());
+		meeples.AddMeeple(home.GetComponent<Location>());
+		meeples.AddMeeple(home.GetComponent<Location>());
+		meeples.AddMeeple(home.GetComponent<Location>());
 	}
 }
