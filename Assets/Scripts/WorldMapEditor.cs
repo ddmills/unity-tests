@@ -10,10 +10,6 @@ public class WorldMapEditor : Editor {
 
         WorldMap wm = (WorldMap) target;
 
-        if (GUILayout.Button("Generate")) {
-            wm.Generate();
-        }
-
         if (GUILayout.Button("Clear")) {
             wm.Clear();
         }

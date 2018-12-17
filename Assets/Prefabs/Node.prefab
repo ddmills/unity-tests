@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4305187545733606}
   - component: {fileID: 114550541369286736}
+  - component: {fileID: 114944073409292540}
   m_Layer: 0
   m_Name: Node
   m_TagString: Untagged
@@ -127,6 +128,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   lerpSpeed: 0.06
+--- !u!114 &114944073409292540
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1492339647081282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e58ce4d3915bfc143bc9425a23bdd04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: 
+  meeples: []
+  slots: []
 --- !u!136 &136727663205449864
 CapsuleCollider:
   m_ObjectHideFlags: 1
