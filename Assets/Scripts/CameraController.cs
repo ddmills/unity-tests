@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class CameraController : Singleton<CameraController> {
 	private CameraFollow cameraFollow;
-	private Camera cam;
 
 	void Start () {
-		cam = GetComponent<Camera>();
 		cameraFollow = GetComponent<CameraFollow>();
 	}
 

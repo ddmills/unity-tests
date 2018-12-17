@@ -57,12 +57,12 @@ public class PlayerController : MonoBehaviour {
 	public void ViewNodeDetails(Node node) {
 		this.selectedNode = node;
 		this.viewMode = ViewMode.Detail;
-		CameraController.Instance.Focus(node.Position, 3f, 40f, .2f);
+		CameraController.Instance.Focus(node.Position, 3f, 40f, .05f);
 	}
 
 	public void ViewMap() {
 		this.viewMode = ViewMode.WorldMap;
-		CameraController.Instance.Focus(selectedNode.Position, 16f, 60f, .1f);
+		CameraController.Instance.Focus(selectedNode.Position, 16f, 60f, .05f);
 	}
 
 	public void NavigateMap(float inputAngle) {
