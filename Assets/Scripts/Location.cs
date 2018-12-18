@@ -5,6 +5,11 @@ using UnityEngine;
 public class Location : MonoBehaviour {
 	[SerializeField]
 	private string label;
+	public string Label {
+		get {
+			return label;
+		}
+	}
 	[SerializeField]
 	private List<Meeple> meeples = new List<Meeple>();
 	[SerializeField]

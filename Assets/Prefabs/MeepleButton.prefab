@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 222190581766620792}
   - component: {fileID: 114449517022630344}
   - component: {fileID: 114740831451881500}
+  - component: {fileID: 114653242266931192}
   m_Layer: 5
   m_Name: MeepleButton
   m_TagString: Untagged
@@ -106,6 +107,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Button
+--- !u!114 &114653242266931192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1955959476679900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e28b5cdd05466248b7912a25325029b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114740831451881500
 MonoBehaviour:
   m_ObjectHideFlags: 1

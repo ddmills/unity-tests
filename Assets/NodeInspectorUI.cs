@@ -11,6 +11,8 @@ public class NodeInspectorUI : Singleton<NodeInspectorUI> {
 	private RectTransform meepleButtonContainer;
 	[SerializeField]
 	private GameObject defaultSelectedButton;
+	[SerializeField]
+	private Text nodeDisplayText;
 
 	public void Hide() {
 		GetComponent<Canvas>().enabled = false;
@@ -18,6 +20,7 @@ public class NodeInspectorUI : Singleton<NodeInspectorUI> {
 
 	public void Show(Location location) {
 		GetComponent<EventSystem>().SetSelectedGameObject(defaultSelectedButton);
+		nodeDisplayText.text = location.Label;
 
 		int childCount = meepleButtonContainer.childCount;
 		for (int i = childCount - 1; i >= 0; i--) {
@@ -27,12 +30,13 @@ public class NodeInspectorUI : Singleton<NodeInspectorUI> {
 		GetComponent<Canvas>().enabled = true;
 
 		location.Meeples.ForEach((m) => {
-			Object.Instantiate(
+			GameObject button = Object.Instantiate(
 				meepleButtonPrefab,
 				Vector2.zero,
 				Quaternion.identity,
 				meepleButtonContainer.transform
 			);
+			button.GetComponent<MeepleSelectionButton>().Init(m);
 		});
 	}
 }
