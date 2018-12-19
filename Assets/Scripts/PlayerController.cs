@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : Singleton<PlayerController> {
 	[SerializeField]
 	private Node selectedNode;
+	[SerializeField]
+	private Meeple selectedMeeple;
 	[SerializeField]
 	private ViewMode viewMode;
 
@@ -14,11 +16,34 @@ public class PlayerController : MonoBehaviour {
 		ViewMap();
 	}
 
-	void SelectNode(string nodeId) {
+	public void SelectNode(string nodeId) {
 		Node ns = WorldMap.Instance.GetNode(nodeId);
 		if (ns) {
 			OnClickNode(ns);
 		}
+	}
+
+	public void DeselectNode() {
+		selectedNode.Deselect();
+	}
+
+	public void SelectMeeple(Meeple meeple) {
+		selectedMeeple = meeple;
+		viewMode = ViewMode.Meeple;
+		CameraController.Instance.Focus(meeple.transform.position, 1f, 40f, .05f);
+		NodeInspectorUI.Instance.ShowMeeple(meeple);
+	}
+
+	public void DeselectMeeple() {
+		if (selectedMeeple) {
+			selectedMeeple.OnHoverLeave();
+			selectedMeeple = null;
+		};
+		ViewNodeDetails(selectedNode);
+	}
+
+	public void OnClickMeeple(Meeple meeple) {
+		SelectMeeple(meeple);
 	}
 
 	public void OnClickNode(Node node) {
@@ -27,7 +52,7 @@ public class PlayerController : MonoBehaviour {
 				OnPrimaryAction();
 				return;
 			} else {
-				selectedNode.Deselect();
+				DeselectNode();
 			}
 		}
 
@@ -43,8 +68,12 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	public void OnSecondaryAction() {
-		if (viewMode == ViewMode.Detail) {
+		if (viewMode == ViewMode.Location) {
 			ViewMap();
+		}
+
+		if (viewMode == ViewMode.Meeple) {
+			DeselectMeeple();
 		}
 	}
 
@@ -56,10 +85,10 @@ public class PlayerController : MonoBehaviour {
 
 	public void ViewNodeDetails(Node node) {
 		this.selectedNode = node;
-		this.viewMode = ViewMode.Detail;
+		this.viewMode = ViewMode.Location;
 		CameraController.Instance.Focus(node.Position, 3f, 40f, .05f);
 		Location location = node.gameObject.GetComponent<Location>();
-		NodeInspectorUI.Instance.Show(location);
+		NodeInspectorUI.Instance.ShowLocation(location);
 	}
 
 	public void ViewMap() {

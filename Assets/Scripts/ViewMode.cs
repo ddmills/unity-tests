@@ -1,4 +1,5 @@
 enum ViewMode {
 	WorldMap,
-  Detail
+  Location,
+  Meeple
 }

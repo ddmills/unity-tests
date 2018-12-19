@@ -14,11 +14,20 @@ public class MeepleSelectionButton : MonoBehaviour, ISelectHandler, IDeselectHan
 		return this;
 	}
 
+	void Start() {
+		Button btn = GetComponent<Button>();
+		btn.onClick.AddListener(OnClick);
+	}
+
 	public void OnSelect(BaseEventData eventData) {
-		meeple.Select();
+		meeple.OnHover();
 	}
 
 	public void OnDeselect(BaseEventData eventData) {
-		meeple.Deselect();
+		meeple.OnHoverLeave();
+	}
+
+	public void OnClick() {
+		PlayerController.Instance.SelectMeeple(meeple);
 	}
 }

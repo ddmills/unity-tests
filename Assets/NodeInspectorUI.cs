@@ -18,16 +18,23 @@ public class NodeInspectorUI : Singleton<NodeInspectorUI> {
 		GetComponent<Canvas>().enabled = false;
 	}
 
-	public void Show(Location location) {
-		GetComponent<EventSystem>().SetSelectedGameObject(defaultSelectedButton);
-		nodeDisplayText.text = location.Label;
+	public void Show() {
+		GetComponent<Canvas>().enabled = true;
+	}
 
+	private void Clear() {
 		int childCount = meepleButtonContainer.childCount;
 		for (int i = childCount - 1; i >= 0; i--) {
 			DestroyImmediate(meepleButtonContainer.GetChild(i).gameObject);
 		}
+	}
 
-		GetComponent<Canvas>().enabled = true;
+	public void ShowLocation(Location location) {
+		GetComponent<EventSystem>().SetSelectedGameObject(defaultSelectedButton);
+		nodeDisplayText.text = location.Label;
+
+		Clear();
+		Show();
 
 		location.Meeples.ForEach((m) => {
 			GameObject button = Object.Instantiate(
@@ -38,5 +45,11 @@ public class NodeInspectorUI : Singleton<NodeInspectorUI> {
 			);
 			button.GetComponent<MeepleSelectionButton>().Init(m);
 		});
+	}
+
+	public void ShowMeeple(Meeple meeple) {
+		nodeDisplayText.text = meeple.Label;
+		Clear();
+		Show();
 	}
 }

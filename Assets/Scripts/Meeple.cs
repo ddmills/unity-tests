@@ -21,7 +21,7 @@ public class Meeple : MonoBehaviour {
 		return this;
 	}
 
-	public void Select() {
+	public void OnHover() {
 		selector = Instantiate(
 			selectorIndicatorPrefab,
 			meepleSelectorHolder.position,
@@ -30,7 +30,7 @@ public class Meeple : MonoBehaviour {
 		);
 	}
 
-	public void Deselect() {
+	public void OnHoverLeave() {
 		if (selector) {
 			Destroy(selector);
 		}
